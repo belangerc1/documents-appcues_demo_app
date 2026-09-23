@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <div className="app-content">
       <div className="home-header">
-        <img src={squirrel} alt="a cute little squirrel peering at you from the tall grass"></img>
+        <img src={squirrel} size="500px" alt="a cute little squirrel peering at you from the tall grass"></img>
       </div>
       <div className="home-body">
         <h1>Welcome to this feature-rich test application</h1>
