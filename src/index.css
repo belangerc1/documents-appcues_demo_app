@@ -384,7 +384,8 @@ input:focus, select:focus {
 }
 
 #toolbar > ul li:first-child {
-  margin-bottom: 8px;
+  /* extra space between Appcues.show() and the other buttons */
+  margin-bottom: 28px;
 }
 
 #toolbar > div {
