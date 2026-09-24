@@ -1,11 +1,31 @@
 /* 
 This is the style sheet! 
 Add any styling here that you would like 
+
+Design tokens come from "Appcues Demo App Design.indd".
+Fonts load from the Adobe Fonts kit linked in public/index.html.
 */
+
+:root {
+  --aubergine: #2a1a3e;
+  --aubergine-ink: #1e1330;
+  --lavender: #e6d6fc;
+  --lavender-hover: #d7c1f7;
+  --sidebar-bg: #faf9fe;
+  --card-bg: #ffffff;
+  --log-bg: #252525;
+  --log-border: #c3bdc7;
+  --font-display: "georgia", Georgia, "Times New Roman", serif;
+  --font-body: "acumin-variable", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Helvetica Neue", Arial, sans-serif;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+}
 
 * { /* remove all default margins and padding from different browsers*/
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -16,10 +36,9 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: rgb(46, 67, 85);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  background-color: var(--sidebar-bg);
+  color: var(--aubergine-ink);
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -33,101 +52,153 @@ code {
     monospace;
 }
 
+h1, h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
 #main-app {
   display: flex;
   height: 100%;
+  padding: 12px 12px 12px 0;
+  gap: 12px;
+}
+
+button {
+  font-family: var(--font-body);
 }
 
 button:hover {
   cursor: pointer;
 }
 
-input {
-  padding: 5px;
+input, select {
+  font-family: var(--font-body);
+  padding: 7px 10px;
   margin: 5px 0;
+  border: 1px solid #d9d4df;
+  border-radius: 6px;
+  background: #fff;
+  color: var(--aubergine-ink);
 }
 
-img {
-  width: 80%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 30px;
-  padding-bottom: 30px;
+input:focus, select:focus {
+  outline: 2px solid var(--lavender-hover);
+  outline-offset: 1px;
+}
+
+/* Shared pill button (lavender) */
+.app-content button,
+#toolbar button {
+  background-color: var(--lavender);
+  color: var(--aubergine-ink);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 8px 20px;
+  transition: background-color 0.15s ease;
+}
+
+.app-content button:hover,
+#toolbar button:hover {
+  background-color: var(--lavender-hover);
 }
 
 /* Nav bar */
 #navigation {
-  width: 75px;
+  width: 88px;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  color: #fff;
+  align-items: flex-end;
+  padding: 14px 12px 14px 8px;
+  color: var(--aubergine-ink);
+  background-color: var(--sidebar-bg);
 }
 
 #navigation a {
-  padding-top: 5px;
-  font-weight: 700;
+  padding-top: 6px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   text-decoration: none;
-  color: #fff;
+  color: var(--aubergine-ink);
   text-align: end;
 }
 
 #navigation a:hover {
-  color: rgb(190, 190, 190);
+  color: #6b5a82;
+}
+
+#navigation a.nav-logo {
+  padding: 0 0 10px;
+}
+
+#navigation .nav-logo img {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  margin: 0;
 }
 
 /* Appcues Launchpad styling */
 
 #launchpad {
-  padding-top: 5px;
-  width: 25px;
-  left: calc(100% - 25px);
+  padding-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
-#launchpad:hover {
-  color: rgb(190, 190, 190);
+#launchpad:hover .appcues-widget-icon {
+  color: #6b5a82;
 }
 
+/* native Launchpad bell, colored to match the nav links */
+#launchpad .appcues-widget-icon {
+  color: var(--aubergine-ink);
+}
 .appcues-widget-icon {
   font-size: 25px !important;
 }
 .appcues-widget-dropdown {
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 
 /* Main app styling */
 
 .app-content {
-  background-color: rgb(169, 203, 226);
-  width: calc(70% - 75px);
-  padding: 10px;
-  color:rgb(0, 8, 63);
-  font-weight: 500;
+  background-color: var(--card-bg);
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 32px;
+  color: var(--aubergine-ink);
+  font-weight: 400;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.app-content button {
-  padding: 5px 20px;
-  font-size: 14px;
-  font-weight: 700;
-  background-color: rgb(222, 222, 249);
-}
-
-.app-content button:hover {
-  background-color: rgb(205, 205, 254);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 10px rgba(30, 19, 48, 0.12);
+  overflow-y: auto;
 }
 
 .app-content p {
   padding: 5px 0;
   width: 60%;
-  line-height: 1.2em;
+  font-size: 14px;
+  line-height: 1.4em;
   text-align: justify;
   margin-left: auto;
   margin-right: auto;
+}
+
+.app-content a {
+  color: #5b3e86;
 }
 
 .app-content ol {
@@ -138,12 +209,33 @@ img {
 .app-content li {
   margin-left: 20px;
   padding: 2px 5px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .app-content h1, .app-content h2 {
   text-align: center;
-  padding-bottom: 5px;
+  padding-bottom: 8px;
+}
+
+.app-content h1 {
+  font-size: 28px;
+}
+
+.app-content h2 {
+  font-size: 20px;
+}
+
+.app-content > h1:first-child {
+  margin-top: 8px;
+}
+
+.app-content button,
+.app-content select {
+  margin: 6px 0;
+}
+
+#input-id-field + button {
+  margin-left: 8px;
 }
 
 .property-setter {
@@ -156,70 +248,166 @@ img {
   width: 250px;
 }
 
+/* Home page */
+
+.app-content.home {
+  justify-content: center;
+}
+
+.home-inner {
+  /* logo on the left, text block on the right; group is centered in the card */
+  display: flex;
+  align-items: stretch;
+  gap: 20px;
+  width: fit-content;
+  margin: 0 auto 8%;
+}
+
+/* logo stretches to the full height of the text block (heading through paragraph) */
+.home-inner img.home-logo {
+  align-self: stretch;
+  height: auto;
+  width: auto;
+  aspect-ratio: 103 / 100;
+  flex-shrink: 0;
+  object-fit: contain;
+  padding: 0;
+  margin: 0;
+}
+
+.home-text {
+  flex-shrink: 0;
+}
+
+.home-titles {
+  margin-bottom: 10px;
+}
+
+.home-titles h1,
+.home-titles h2 {
+  text-align: left;
+  padding-bottom: 0;
+}
+
+.home-titles h1 {
+  /* one line: the heading sets the text block's width, and the logo scales to its height */
+  font-size: clamp(18px, 1.9vw, 26px);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.home-titles h2 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.home-body p {
+  /* match the heading width without widening the group */
+  padding-bottom: 0;
+  width: 0;
+  min-width: 100%;
+  text-align: left;
+  font-size: 13px;
+}
+
+/* narrow windows: let the heading wrap and give the logo a fixed size so the group fits the card */
+@media (max-width: 900px) {
+  .home-inner {
+    max-width: 100%;
+  }
+  .home-text {
+    flex-shrink: 1;
+    min-width: 0;
+  }
+  .home-titles h1 {
+    white-space: normal;
+  }
+  .home-inner img.home-logo {
+    align-self: center;
+    width: 96px;
+    height: auto;
+  }
+}
+
 /* Appcues Toolbar */
 
 #toolbar {
   width: 30%;
-  padding: 10px;
+  flex-shrink: 0;
+  padding: 18px 22px;
   color: #fff;
+  border-radius: var(--radius-lg);
+  background: var(--aubergine) url("./resources/aubergine-bg.png") center / cover no-repeat;
+  box-shadow: 0 2px 10px rgba(30, 19, 48, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 #toolbar input {
-  width: calc(100% - 14px);
-  margin: 5px 0;
+  width: 100%;
+  margin: 8px 0 10px;
+  border: none;
 }
 
 #toolbar button {
-  background-color: rgb(16, 140, 197);
-  color: #fff;
-  font-weight: 700;
-  margin: 5px 0;
-  padding: 2px 10px;
-  width: 50%;
-  height: 35px;
-}
-
-#toolbar button:hover {
-  background-color: rgb(14, 114, 160)
+  display: block;
+  margin: 6px auto;
+  width: 55%;
+  min-width: 150px;
+  height: 30px;
+  padding: 0 12px;
+  font-size: 12px;
 }
 
 #toolbar h2 {
   text-align: center;
-  height: 7%;
-  padding-bottom: 5px;
-  text-decoration: underline;
+  font-size: 22px;
+  padding-bottom: 8px;
+}
+
+#toolbar h3 {
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.3;
 }
 
 #toolbar > ul {
-  height: 33%;
+  flex: 0 0 auto;
 }
 
 #toolbar > ul li {
   list-style-type: none;
 }
 
-#toolbar > div {
-  height: 60%;
+#toolbar > ul li:first-child {
+  margin-bottom: 8px;
 }
 
-#toolbar > div > h2 {
-  height: 8%;
+#toolbar > div {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
 }
 
 #toolbar > div > button {
-  height: 5%;
-}
-
-#toolbar > div {
-  margin-top: 50px;
+  flex-shrink: 0;
+  margin-top: 12px;
 }
 
 #events-log {
-  background-color: #282828;
-  border: inset;
-  border-radius: 5px;
-  height: 85%;
-  overflow: scroll;
+  background-color: var(--log-bg);
+  border: 2px solid var(--log-border);
+  border-radius: 8px;
+  flex: 1 1 auto;
+  min-height: 120px;
+  overflow: auto;
+  padding: 6px 4px;
 }
 
 #events-log li {
@@ -233,6 +421,8 @@ img {
 #events-log p {
   color: #66FF66;
   margin-left: 5px;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 12px;
 }
 
 /* custom Appcues styling */
