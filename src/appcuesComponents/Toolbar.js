@@ -38,12 +38,12 @@ const Toolbar = () => {
             <li>
                 <h3>Enter ID and click "Appcues.show" to launch Appcues content</h3>
                 <input placeholder="-AbCdEf-12345" id="show-flow" type="text"/>
-                <button onClick={showFlow}>Appcues.show()</button>
+                <button class="toolbar-item" onClick={showFlow}>Appcues.show()</button>
             </li>
-            <li><button onClick={clearShow}>Appcues.clear()</button></li>
-            <li><button onClick={anonymousUser}>Appcues.anonymous()</button></li>
-            <li><button onClick={openDebugger}>Appcues.debug()</button></li>
-            <li><button onClick={resetAppcues}>Appcues.reset()</button></li>
+            <li class="toolbar-item"><button onClick={clearShow}>Appcues.clear()</button></li>
+            <li class="toolbar-item"><button onClick={anonymousUser}>Appcues.anonymous()</button></li>
+            <li class="toolbar-item"><button onClick={openDebugger}>Appcues.debug()</button></li>
+            <li class="toolbar-item"><button onClick={resetAppcues}>Appcues.reset()</button></li>
             </ul>
             <EventLog />
         </div>
