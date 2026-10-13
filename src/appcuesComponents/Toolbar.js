@@ -1,5 +1,6 @@
 import React from "react";
 import { EventLog } from "./EventLog";
+import { clearProfile } from "./identity";
 
 /*
   This toolbar contains the Appcues javacript API calls useful for debugging and testing
@@ -8,8 +9,7 @@ import { EventLog } from "./EventLog";
 
 const resetAppcues = () => { // resets the session and removes user information from local storage
     window.Appcues.reset();
-    window.localStorage.removeItem("currentUser");
-    window.localStorage.removeItem("timestamp");
+    clearProfile(); // removes the stored test user + group
 }
 
 const clearShow = () => {

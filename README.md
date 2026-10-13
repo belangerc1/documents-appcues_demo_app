@@ -164,7 +164,7 @@ If using VSCode:
 
 ![user_id](./readme_pics/user_id.png)
 
-2. You can also add in any other user properties you would like sent into Appcues into the Appcues.identify() call in this file. By default, this currently includes two properties: `role` and `signupDate` (a UNIX timestamp date property).
+2. You can also add in any other user properties you would like sent into Appcues into the Appcues.identify() call in this file. User and group properties are set in `src > appcuesComponents > identity.js`. Users get `createdAt` (a UNIX timestamp date property), `role`, `email`, and `language`; the group gets `planTier`.
 
 ![identify](./readme_pics/identify.png)
 
